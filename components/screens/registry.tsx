@@ -1,0 +1,25 @@
+"use client"
+
+import type { ComponentType } from "react"
+import { PlaceholderScreen } from "@/components/screens/misc"
+import { SarScreen, SarDetailScreen, SarNewScreen } from "@/components/screens/sar"
+import { AsrScreen, AsrDetailScreen, AsrNewScreen } from "@/components/screens/asr"
+import { MarScreen, MarFolderScreen, MarLineScreen, MarNewScreen } from "@/components/screens/mar"
+
+export type ScreenProps = { params: Record<string, any> }
+
+// Screens are registered here as modules are built out.
+// Unregistered keys fall back to a labeled placeholder.
+export const SCREEN_REGISTRY: Record<string, ComponentType<ScreenProps>> = {
+  sar: SarScreen as any,
+  "sar-detail": SarDetailScreen as any,
+  "sar-new": SarNewScreen as any,
+  asr: AsrScreen as any,
+  "asr-detail": AsrDetailScreen as any,
+  "asr-new": AsrNewScreen as any,
+  mar: MarScreen as any,
+  "mar-folder": MarFolderScreen as any,
+  "mar-line": MarLineScreen as any,
+  "mar-new": MarNewScreen as any,
+  schedule: () => <PlaceholderScreen title="Schedule" note="Planner coming up in this prototype." />,
+}
