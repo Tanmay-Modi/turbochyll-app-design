@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Plus, Edit2, Trash2, X, RefreshCw } from 'lucide-react'
+import { BackButton } from '@/components/app/back-button'
 import type { ScreenProps } from './registry'
 
 interface TTDItem {
@@ -117,7 +118,10 @@ export function OfficeTTDScreen(props: ScreenProps) {
       {/* Header */}
       <div className="flex-none border-b border-border px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between mb-3">
-          <h1 className="text-xl md:text-2xl font-bold text-foreground">Office TTD</h1>
+          <div className="flex items-center gap-2">
+            <BackButton />
+            <h1 className="text-xl md:text-2xl font-bold text-foreground">Office TTD</h1>
+          </div>
           <div className="flex gap-2">
             <button
               onClick={handleRefresh}
