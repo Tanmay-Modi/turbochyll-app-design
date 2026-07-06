@@ -10,6 +10,7 @@ import { OpportunitiesScreen } from "@/components/screens/opportunities"
 import { OfficeTTDScreen } from "@/components/screens/office-ttd"
 import { QuoteBookScreen } from "@/components/screens/quotebook"
 import { WorkOnHandScreen } from "@/components/screens/workonhand"
+import { ScheduleScreen } from "@/components/screens/schedule"
 
 export type ScreenProps = { params: Record<string, any> }
 
@@ -32,5 +33,5 @@ export const SCREEN_REGISTRY: Record<string, ComponentType<ScreenProps>> = {
   officeTtd: OfficeTTDScreen as any,
   quotebook: QuoteBookScreen as any,
   workonhand: WorkOnHandScreen as any,
-  schedule: () => <PlaceholderScreen title="Schedule" note="Planner coming up in this prototype." />,
+  schedule: ScheduleScreen as any,
 }
