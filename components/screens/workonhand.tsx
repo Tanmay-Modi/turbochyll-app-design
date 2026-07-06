@@ -32,6 +32,40 @@ interface WorkOnHand {
   priority?: string
 }
 
+const CATEGORIES = [
+  'Quotes',
+  'Maintenance',
+  'PTO',
+  'T&M',
+  'Cooling Tower Maintenance',
+  'Warranty',
+  'MAW-Mostly Admin Work',
+  'Truck',
+  'MAR'
+]
+
+const CUSTOMERS = [
+  'Curry TV- 365 5th Ave',
+  'NY Methodist',
+  '410 Central Park South Corp',
+  '135 West 50th Street',
+  '14 West 58th Street - Fenris Mazars',
+  '14 Wall Street',
+  '144 I Broadway',
+  '240 Park Avenue South Condominiums',
+  '325 East 84th Street',
+  '325 Lexington Avenue',
+  '555 West 23rd Street',
+  'DVM - Kings County Hospital',
+  'DVM - Kings County - IT Room',
+  'DVM Industries - Queens Health Clinic',
+  'Montefiore Hospital-1250 Waters Place',
+  'Montefiore Medical Park - 1625 Poplar Ave',
+  'Montefiore Hospital- Westminster Square',
+  'Montefiore Hospital-1825 East Chester road',
+  'Start On-Call Watch'
+]
+
 const mockData: WorkOnHand[] = [
   {
     id: '1',
@@ -297,8 +331,8 @@ export function WorkOnHandScreen({ params }: ScreenProps) {
                   <div className="px-3.5 py-3 bg-muted/30 border-t border-border space-y-2">
                     <div className="grid grid-cols-2 gap-2">
                       <div><label className="text-xs font-medium text-muted-foreground block mb-1">T&M Number</label><input type="text" value={editForm.tamNumber || ''} onChange={(e) => setEditForm({ ...editForm, tamNumber: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
-                      <div><label className="text-xs font-medium text-muted-foreground block mb-1">Category</label><input type="text" value={editForm.category || ''} onChange={(e) => setEditForm({ ...editForm, category: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
-                      <div><label className="text-xs font-medium text-muted-foreground block mb-1">Customer</label><input type="text" value={editForm.customer || ''} onChange={(e) => setEditForm({ ...editForm, customer: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
+                      <div><label className="text-xs font-medium text-muted-foreground block mb-1">Category</label><select value={editForm.category || ''} onChange={(e) => setEditForm({ ...editForm, category: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50"><option value="">Select Category</option>{CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}</select></div>
+                      <div><label className="text-xs font-medium text-muted-foreground block mb-1">Customer</label><select value={editForm.customer || ''} onChange={(e) => setEditForm({ ...editForm, customer: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50"><option value="">Select Customer</option>{CUSTOMERS.map(cust => <option key={cust} value={cust}>{cust}</option>)}</select></div>
                       <div><label className="text-xs font-medium text-muted-foreground block mb-1">Location</label><input type="text" value={editForm.location || ''} onChange={(e) => setEditForm({ ...editForm, location: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
                     </div>
                     <div><label className="text-xs font-medium text-muted-foreground block mb-1">Description</label><input type="text" value={editForm.description || ''} onChange={(e) => setEditForm({ ...editForm, description: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
@@ -418,8 +452,8 @@ export function WorkOnHandScreen({ params }: ScreenProps) {
                             <div className="space-y-3">
                               <div className="grid grid-cols-6 gap-3">
                                 <div><label className="text-xs font-medium text-muted-foreground block mb-1">T&M #</label><input type="text" value={editForm.tamNumber || ''} onChange={(e) => setEditForm({ ...editForm, tamNumber: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
-                                <div><label className="text-xs font-medium text-muted-foreground block mb-1">Category</label><input type="text" value={editForm.category || ''} onChange={(e) => setEditForm({ ...editForm, category: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
-                                <div><label className="text-xs font-medium text-muted-foreground block mb-1">Customer</label><input type="text" value={editForm.customer || ''} onChange={(e) => setEditForm({ ...editForm, customer: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
+                                <div><label className="text-xs font-medium text-muted-foreground block mb-1">Category</label><select value={editForm.category || ''} onChange={(e) => setEditForm({ ...editForm, category: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50"><option value="">Select Category</option>{CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}</select></div>
+                                <div><label className="text-xs font-medium text-muted-foreground block mb-1">Customer</label><select value={editForm.customer || ''} onChange={(e) => setEditForm({ ...editForm, customer: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50"><option value="">Select Customer</option>{CUSTOMERS.map(cust => <option key={cust} value={cust}>{cust}</option>)}</select></div>
                                 <div><label className="text-xs font-medium text-muted-foreground block mb-1">Location</label><input type="text" value={editForm.location || ''} onChange={(e) => setEditForm({ ...editForm, location: e.target.value })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
                                 <div><label className="text-xs font-medium text-muted-foreground block mb-1">ST Hours</label><input type="number" value={editForm.estHoursST || ''} onChange={(e) => setEditForm({ ...editForm, estHoursST: parseInt(e.target.value) })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
                                 <div><label className="text-xs font-medium text-muted-foreground block mb-1">OT Hours</label><input type="number" value={editForm.estHoursOT || ''} onChange={(e) => setEditForm({ ...editForm, estHoursOT: parseInt(e.target.value) })} className="w-full px-2.5 py-1.5 text-xs border border-input rounded bg-card focus:outline-none focus:ring-2 focus:ring-primary/50" /></div>
