@@ -45,6 +45,8 @@ function Router() {
         return <div className="w-full h-full overflow-auto"><SCREEN_REGISTRY.quotebook params={params ?? {}} /></div>
       case "workonhand":
         return <div className="w-full h-full overflow-auto"><SCREEN_REGISTRY.workonhand params={params ?? {}} /></div>
+      case "tmnow":
+        return <div className="w-full h-full overflow-auto"><SCREEN_REGISTRY.tmnow params={params ?? {}} /></div>
       case "profile":
         return <ProfileScreen />
       case "alerts":

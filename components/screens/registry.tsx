@@ -11,6 +11,7 @@ import { OfficeTTDScreen } from "@/components/screens/office-ttd"
 import { QuoteBookScreen } from "@/components/screens/quotebook"
 import { WorkOnHandScreen } from "@/components/screens/workonhand"
 import { ScheduleScreen } from "@/components/screens/schedule"
+import { TMNowScreen } from "@/components/screens/tmnow"
 
 export type ScreenProps = { params: Record<string, any> }
 
@@ -34,4 +35,5 @@ export const SCREEN_REGISTRY: Record<string, ComponentType<ScreenProps>> = {
   quotebook: QuoteBookScreen as any,
   workonhand: WorkOnHandScreen as any,
   schedule: ScheduleScreen as any,
+  tmnow: TMNowScreen as any,
 }
