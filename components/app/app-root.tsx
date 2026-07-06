@@ -7,6 +7,7 @@ import { LoginScreen, OtpScreen, ForgotScreen, ResetScreen } from "@/components/
 import { RolesScreen } from "@/components/screens/roles"
 import { DashboardScreen, ModulesScreen } from "@/components/screens/dashboard"
 import { ProfileScreen, AlertsScreen, PlaceholderScreen } from "@/components/screens/misc"
+import { POListScreen, PODetailScreen } from "@/components/screens/po"
 import { SCREEN_REGISTRY } from "@/components/screens/registry"
 
 const AUTH_SCREENS = new Set(["login", "otp", "forgot", "reset", "roles"])
@@ -32,6 +33,10 @@ function Router() {
         return <DashboardScreen />
       case "modules":
         return <ModulesScreen />
+      case "po":
+        return <POListScreen />
+      case "poDetail":
+        return <PODetailScreen params={params ?? {}} />
       case "profile":
         return <ProfileScreen />
       case "alerts":
