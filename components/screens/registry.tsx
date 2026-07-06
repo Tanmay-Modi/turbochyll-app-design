@@ -6,6 +6,8 @@ import { SarScreen, SarDetailScreen, SarNewScreen } from "@/components/screens/s
 import { AsrScreen, AsrDetailScreen, AsrNewScreen } from "@/components/screens/asr"
 import { MarScreen, MarFolderScreen, MarLineScreen, MarNewScreen } from "@/components/screens/mar"
 import { POListScreen, PODetailScreen } from "@/components/screens/po"
+import { OpportunitiesScreen } from "@/components/screens/opportunities"
+import { OfficeTTDScreen } from "@/components/screens/office-ttd"
 
 export type ScreenProps = { params: Record<string, any> }
 
@@ -24,5 +26,7 @@ export const SCREEN_REGISTRY: Record<string, ComponentType<ScreenProps>> = {
   "mar-new": MarNewScreen as any,
   po: POListScreen as any,
   poDetail: PODetailScreen as any,
+  opportunities: OpportunitiesScreen as any,
+  officeTtd: OfficeTTDScreen as any,
   schedule: () => <PlaceholderScreen title="Schedule" note="Planner coming up in this prototype." />,
 }
