@@ -8,6 +8,7 @@ import { MarScreen, MarFolderScreen, MarLineScreen, MarNewScreen } from "@/compo
 import { POListScreen, PODetailScreen } from "@/components/screens/po"
 import { OpportunitiesScreen } from "@/components/screens/opportunities"
 import { OfficeTTDScreen } from "@/components/screens/office-ttd"
+import { QuoteBookScreen } from "@/components/screens/quotebook"
 
 export type ScreenProps = { params: Record<string, any> }
 
@@ -28,5 +29,6 @@ export const SCREEN_REGISTRY: Record<string, ComponentType<ScreenProps>> = {
   poDetail: PODetailScreen as any,
   opportunities: OpportunitiesScreen as any,
   officeTtd: OfficeTTDScreen as any,
+  quotebook: QuoteBookScreen as any,
   schedule: () => <PlaceholderScreen title="Schedule" note="Planner coming up in this prototype." />,
 }
