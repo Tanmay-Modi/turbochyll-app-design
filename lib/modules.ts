@@ -13,7 +13,7 @@ export const MODULES: Record<Role, Module[]> = {
     { key: "sar", label: "SAR", icon: "ClipboardList", desc: "Service Activity Reports" },
     { key: "asr", label: "ASR", icon: "FileСheckShim", desc: "Additional Service Recs" },
     { key: "opportunities", label: "Opportunities", icon: "TrendingUp", desc: "Sales pipeline" },
-    { key: "officettd", label: "Office TTD", icon: "ListTodo", desc: "Things to do" },
+    { key: "officeTtd", label: "Office TTD", icon: "ListTodo", desc: "Things to do" },
     { key: "quotebook", label: "Quote Book", icon: "BookOpen", desc: "Quotes & analytics" },
     { key: "tmnow", label: "T&M Now", icon: "DollarSign", desc: "T&M profitability" },
     { key: "workonhand", label: "Work On Hand", icon: "Hammer", desc: "Active jobs" },
