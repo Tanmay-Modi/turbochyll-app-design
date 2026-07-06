@@ -127,20 +127,29 @@ const SCHEDULE_DATA: ScheduleItem[] = [
 
 export function ScheduleScreen(props: ScreenProps) {
   const [showCalendar, setShowCalendar] = useState(false)
+  const [showPasswordDialog, setShowPasswordDialog] = useState(false)
   const [passwordInput, setPasswordInput] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [currentMonth, setCurrentMonth] = useState(new Date(2026, 6, 1))
   const [expandedDate, setExpandedDate] = useState<string | null>(null)
 
   const handleEditClick = () => {
-    setShowCalendar(false)
+    setShowPasswordDialog(true)
     setPasswordInput('')
+    setShowPassword(false)
   }
 
   const handlePasswordSubmit = () => {
     if (passwordInput === '1234') {
       setShowCalendar(true)
+      setShowPasswordDialog(false)
+      setPasswordInput('')
     }
+  }
+
+  const handleClosePasswordDialog = () => {
+    setShowPasswordDialog(false)
+    setPasswordInput('')
   }
 
   const daysInMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate()
@@ -235,8 +244,8 @@ export function ScheduleScreen(props: ScreenProps) {
           )}
 
           {/* Password Protection Dialog */}
-          {!showCalendar && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 md:hidden">
+          {showPasswordDialog && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
               <Card className="w-80 p-6">
                 <div className="space-y-4">
                   <div>
@@ -265,6 +274,12 @@ export function ScheduleScreen(props: ScreenProps) {
                       className="flex-1 px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded hover:bg-primary/90 disabled:opacity-50"
                     >
                       View Calendar
+                    </button>
+                    <button
+                      onClick={handleClosePasswordDialog}
+                      className="flex-1 px-4 py-2 border border-input text-foreground text-sm font-medium rounded hover:bg-muted"
+                    >
+                      Cancel
                     </button>
                   </div>
                 </div>
