@@ -348,7 +348,7 @@ export function PODetailScreen({ params }: { params: { id: string } }) {
           {/* PO Header Section */}
           <div className="rounded border border-border bg-card p-4">
             <h3 className="mb-3 font-semibold text-foreground text-sm">PO Information</h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="text-[11px] font-medium text-muted-foreground">PO Date</label>
                 <input
@@ -366,7 +366,7 @@ export function PODetailScreen({ params }: { params: { id: string } }) {
                   <option>Beardsley Transmission</option>
                 </select>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 sm:col-span-2">
                 <label className="text-[11px] font-medium text-muted-foreground">Address</label>
                 <input
                   type="text"
@@ -401,7 +401,7 @@ export function PODetailScreen({ params }: { params: { id: string } }) {
                   />
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1 sm:col-span-2">
                 <label className="text-[11px] font-medium text-muted-foreground">Job Name</label>
                 <input
                   type="text"
@@ -475,7 +475,70 @@ export function PODetailScreen({ params }: { params: { id: string } }) {
           {/* Line Items */}
           <div className="rounded border border-border bg-card p-4">
             <h3 className="mb-3 font-semibold text-foreground text-sm">Line Items</h3>
-            <div className="overflow-x-auto">
+            
+            {/* Mobile: Card View */}
+            <div className="md:hidden space-y-3">
+              {lineItems.map((item, idx) => (
+                <div key={idx} className="rounded border border-input bg-yellow-50 p-3 space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Qty</label>
+                      <input type="text" value={item.qty} className="w-full border border-input bg-white px-2 py-1.5 text-xs" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Unit Cost</label>
+                      <input type="text" value={item.unitCost} className="w-full border border-input bg-white px-2 py-1.5 text-xs text-right" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] font-medium text-muted-foreground block mb-1">Description</label>
+                    <input type="text" value={item.description} className="w-full border border-input bg-white px-2 py-1.5 text-xs" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Part #</label>
+                      <input type="text" value={item.partNumber} className="w-full border border-input bg-white px-2 py-1.5 text-xs" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Unit Total</label>
+                      <div className="px-2 py-1.5 text-right font-medium text-xs">${item.unitTotal}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {/* Mobile Empty rows */}
+              {[...Array(10 - lineItems.length)].map((_, idx) => (
+                <div key={`empty-${idx}`} className="rounded border border-input bg-yellow-50 p-3 space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Qty</label>
+                      <input type="text" className="w-full border border-input bg-white px-2 py-1.5 text-xs" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Unit Cost</label>
+                      <input type="text" className="w-full border border-input bg-white px-2 py-1.5 text-xs text-right" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-[10px] font-medium text-muted-foreground block mb-1">Description</label>
+                    <input type="text" className="w-full border border-input bg-white px-2 py-1.5 text-xs" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Part #</label>
+                      <input type="text" className="w-full border border-input bg-white px-2 py-1.5 text-xs" />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-medium text-muted-foreground block mb-1">Unit Total</label>
+                      <div className="px-2 py-1.5 text-right font-medium text-xs">$0.00</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Table View */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-xs border-collapse">
                 <thead>
                   <tr className="border-b border-border">
@@ -550,20 +613,20 @@ export function PODetailScreen({ params }: { params: { id: string } }) {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-2 pb-4">
-            <button className="flex-1 rounded border border-border bg-primary text-card px-4 py-2.5 text-xs font-medium hover:bg-primary/90 active:bg-primary/80">
+          <div className="grid grid-cols-2 gap-2 pb-4 sm:flex sm:gap-2">
+            <button className="rounded border border-border bg-primary text-card px-4 py-2.5 text-xs font-medium hover:bg-primary/90 active:bg-primary/80">
               Update
             </button>
-            <button className="flex-1 rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted">
+            <button className="rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted whitespace-nowrap">
               Entered in QB
             </button>
-            <button className="flex-1 rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted">
+            <button className="rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted">
               Send
             </button>
-            <button className="flex-1 rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted">
+            <button className="rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted">
               Copy
             </button>
-            <button className="flex-1 rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted">
+            <button className="rounded border border-border bg-card text-foreground px-4 py-2.5 text-xs font-medium hover:bg-muted active:bg-muted sm:flex-1">
               Terminate
             </button>
           </div>
